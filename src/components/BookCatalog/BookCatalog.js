@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {  BrowserRouter } from 'react-router-dom';
+import {  HashRouter } from 'react-router-dom';
 
 import "./BookCatalog.scss";
 import BooksList from "../BooksList/BooksList";
@@ -12,75 +12,12 @@ import AuthorInfo from "../AuthorInfo/AuthorInfo";
 
 class BookCatalog extends Component {
   state = {
+    isLoading: false,
+    error: false,
     data: {
-      books: [
-        {
-          "id": 1,
-          "title": "Unlocking Android",
-          "shortDescription": "Unlocking Android: A Developer's Guide provides concise, hands-on instruction for the Android operating system and development tools. This book teaches important architectural concepts in a straightforward writing style and builds on this with practical and useful examples throughout.",
-          "authorId": 1,
-          "categoryId": 1
-        },
-        {
-          "id": 2,
-          "title": "Android in Action, Second Edition",
-          "shortDescription": "Android in Action, Second Edition is a comprehensive tutorial for Android developers. Taking you far beyond \"Hello Android,\" this fast-paced book puts you in the driver's seat as you learn important architectural concepts and implementation strategies. You'll master the SDK, build WebKit apps using HTML 5, and even learn to extend or replace Android's built-in features by building useful and intriguing examples. ",
-          "authorId": 1,
-          "categoryId": 1
-        },
-        {
-          "id": 3,
-          "title": "Flexible Rails",
-          "shortDescription": "Flexible Rails created a standard to which I hold other technical books. You definitely get your money's worth.",
-          "authorId": 2,
-          "categoryId": 3
-        },
-        {
-          "id": 4,
-          "title": "Hello! Flex 4",
-          "shortDescription": "Hello! Flex 4 progresses through 26 self-contained examples selected so you can progressively master Flex. They vary from small one-page apps, to a 3D rotating haiku, to a Connect Four-like game. And in the last chapter you'll learn to build a full Flex application called SocialStalkr   a mashup that lets you follow your friends by showing their tweets on a Yahoo map.",
-          "authorId": 2,
-          "categoryId": 2
-        },
-        {
-          "id": 5,
-          "title": "JSTL in Action",
-          "shortDescription": "JSTL is an important simplification of the Java web platform. With JSTL, page authors can now write dynamic pages using standard HTML-like tags and an easy-to-learn expression language.",
-          "authorId": 3,
-          "categoryId": 2
-        }
-      ],
-      authors: [
-        {
-          "id": 1,
-          "name": "W. Frank Ableson",
-          "biography": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Diam in arcu cursus euismod quis.",
-        },
-        {
-          "id": 2,
-          "name": "Peter Armstrong",
-          "biography": "Etiam non quam lacus suspendisse faucibus. Sagittis eu volutpat odio facilisis mauris sit. Nisl condimentum id venenatis a condimentum.",
-        },
-        {
-          "id": 3,
-          "name": "Shawn Bayern",
-          "biography": "Maecenas sed enim ut sem viverra aliquet eget sit amet. Massa id neque aliquam vestibulum morbi blandit cursus. Feugiat vivamus at augue eget arcu dictum varius duis at.",
-        }
-      ],
-      categories: [
-        {
-          "id": 1,
-          "name": "Software Engineering"
-        },
-        {
-          "id": 2,
-          "name": "Internet"
-        },
-        {
-          "id": 3,
-          "name": "Web Development"
-        }
-      ],
+      books: null,
+      authors: null,
+      categories: null,
     },
     routes: [
       {
@@ -107,17 +44,57 @@ class BookCatalog extends Component {
     ],
   };
 
+  normalizeData = (dataArray) => {
+    const dataObject = {};
+    dataArray.forEach((data) => {
+      dataObject[data.id] = {...data};
+    });
+    return dataObject;
+  };
 
+  getDatafromServer = async url => fetch(url)
+    .then(response => response.json());
+
+  async loadData() {
+    this.setState({
+      isLoading: true,
+      error: false,
+    });
+    try {
+      const [books, authors, categories] = await Promise.all([
+        this.getDatafromServer('https://raw.githubusercontent.com/olesyamogil/books/master/database/books.json'),
+        this.getDatafromServer('https://raw.githubusercontent.com/olesyamogil/books/master/database/authors.json'),
+        this.getDatafromServer('https://raw.githubusercontent.com/olesyamogil/books/master/database/categories.json'),
+      ]);
+
+      this.setState({
+        data: {
+          books: this.normalizeData(books),
+          authors: this.normalizeData(authors),
+          categories: this.normalizeData(categories),
+        },
+      });
+
+    } catch (e) {
+      this.setState({ error: true });
+    } finally {
+      this.setState({ isLoading: false });
+    }
+  }
+
+  componentDidMount() {
+    this.loadData();
+  }
 
   render() {
     return (
-     <BrowserRouter>
+     <HashRouter>
        <header className="header">
          <h1 className="header__title">Book Catalog</h1>
          <Tabs tabs={Object.keys(this.state.data)}/>
        </header>
        <TabsContent content={this.state.routes} />
-     </BrowserRouter>
+     </HashRouter>
     );
   }
 }
