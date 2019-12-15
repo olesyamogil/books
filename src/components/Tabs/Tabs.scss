@@ -1,0 +1,18 @@
+@import "../../variables.scss";
+
+.tabs {
+  list-style: none;
+  display: flex;
+  margin-bottom: 0;
+  .tab {
+    display: block;
+    padding: 20px;
+    text-decoration: none;
+    text-transform: capitalize;
+    color: $text-color;
+  }
+
+  .tab-active {
+    background-color: $main-color;
+  }
+}

@@ -1,10 +1,9 @@
 import React from 'react';
+import BookCatalog from "./components/BookCatalog/BookCatalog";
 
 function App() {
   return (
-    <div className="App">
-bla
-    </div>
+    <BookCatalog />
   );
 }
 

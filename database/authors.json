@@ -1,0 +1,17 @@
+[
+  {
+    "id": 1,
+    "name": "W. Frank Ableson",
+    "biography": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Diam in arcu cursus euismod quis."
+  },
+  {
+    "id": 2,
+    "name": "Peter Armstrong",
+    "biography": "Etiam non quam lacus suspendisse faucibus. Sagittis eu volutpat odio facilisis mauris sit. Nisl condimentum id venenatis a condimentum."
+  },
+  {
+    "id": 3,
+    "name": "Shawn Bayern",
+    "biography": "Maecenas sed enim ut sem viverra aliquet eget sit amet. Massa id neque aliquam vestibulum morbi blandit cursus. Feugiat vivamus at augue eget arcu dictum varius duis at."
+  }
+]
