@@ -18,23 +18,27 @@ class BookCatalog extends Component {
     routes: [
       {
         path: '/books',
-        component: () => <BooksList books={this.state.data.books} authors={this.state.data.authors}/>
+        component: (match) => <BooksList data={this.state.data} match={match}/>
       },
       {
         path: '/books/:id',
-        component: (match) => <BookInfo match={match}/>,
+        component: (match) => <BookInfo match={match} data={this.state.data}/>,
       },
       {
         path: '/authors',
-        component: () => <AuthorsList authors={this.state.data.authors}/>
+        component: () => <AuthorsList data={this.state.data}/>
       },
       {
         path: '/authors/:id',
-        component: (match) => <AuthorInfo match={match}/>
+        component: (match) => <AuthorInfo match={match} data={this.state.data}/>
       },
       {
         path: '/categories',
-        component: () => <CategoriesList categories={this.state.data.categories}/>
+        component: () => <CategoriesList data={this.state.data}/>
+      },
+      {
+        path: '/categories/:id',
+        component: (match) => <BooksList match={match} data={this.state.data}/>
       },
 
     ],

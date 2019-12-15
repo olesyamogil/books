@@ -8,7 +8,7 @@ class Tabs extends Component {
       <ul className="tabs">
         {
           this.props.tabs.map(tab => (
-            <li><NavLink className="tab" activeClassName="tab-active" to={`/${tab}`}>{tab}</NavLink></li>
+            <li key={tab}><NavLink className="tab" activeClassName="tab-active" to={`/${tab}`}>{tab}</NavLink></li>
           ))
         }
       </ul>

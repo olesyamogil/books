@@ -1,19 +1,22 @@
 import React, {Component} from 'react';
 import { Route, Switch } from 'react-router-dom';
+import "./TabsContent.scss"
 
 class TabsContent extends Component {
   render() {
     return (
-      <Switch>
-        {this.props.content.map(item => (
-          <Route
-            exact
-            path={item.path}
-            render={item.component}
-          />
-        ))}
-      </Switch>
-
+      <div className="tab-content">
+        <Switch>
+          {this.props.content.map(item => (
+            <Route
+              key={item.path}
+              exact
+              path={item.path}
+              render={item.component}
+            />
+          ))}
+        </Switch>
+      </div>
     );
   }
 }
