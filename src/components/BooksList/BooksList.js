@@ -3,9 +3,11 @@ import React, {Component} from 'react';
 class BooksList extends Component {
   render() {
     return (
-      <div>
-        Books List
-      </div>
+      <>
+        {Object.keys(this.props.books).map(book => (
+          <p>{this.props.books[book].title}</p>
+        ))}
+      </>
     );
   }
 }

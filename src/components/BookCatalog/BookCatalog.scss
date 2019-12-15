@@ -17,4 +17,31 @@ body {
   }
 }
 
+.errorMessage {
+  width: 300px;
+  padding: 20px;
+  margin: 200px auto;
+  background-color: $secondary-color;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-content: center;
+
+  &__text {
+    height: 50px;
+  }
+
+  &__button {
+    border: 1px solid $main-color;
+    background-color: $secondary-color;
+    padding: 10px 20px;
+    border-radius: 5px;
+    &:hover {
+      background-color: $main-color;
+      cursor: pointer;
+    }
+  }
+
+}
+
 

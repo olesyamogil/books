@@ -3,35 +3,35 @@
     "id": 1,
     "title": "Unlocking Android",
     "shortDescription": "Unlocking Android: A Developer's Guide provides concise, hands-on instruction for the Android operating system and development tools. This book teaches important architectural concepts in a straightforward writing style and builds on this with practical and useful examples throughout.",
-    "authorId": 1,
+    "authorsIds": [ 1 ],
     "categoryId": 1
   },
   {
     "id": 2,
     "title": "Android in Action, Second Edition",
     "shortDescription": "Android in Action, Second Edition is a comprehensive tutorial for Android developers. Taking you far beyond \"Hello Android,\" this fast-paced book puts you in the driver's seat as you learn important architectural concepts and implementation strategies. You'll master the SDK, build WebKit apps using HTML 5, and even learn to extend or replace Android's built-in features by building useful and intriguing examples. ",
-    "authorId": 1,
+    "authorsIds": [1, 2],
     "categoryId": 1
   },
   {
     "id": 3,
     "title": "Flexible Rails",
     "shortDescription": "Flexible Rails created a standard to which I hold other technical books. You definitely get your money's worth.",
-    "authorId": 2,
+    "authorsIds": [ 2 ],
     "categoryId": 3
   },
   {
     "id": 4,
     "title": "Hello! Flex 4",
     "shortDescription": "Hello! Flex 4 progresses through 26 self-contained examples selected so you can progressively master Flex. They vary from small one-page apps, to a 3D rotating haiku, to a Connect Four-like game. And in the last chapter you'll learn to build a full Flex application called SocialStalkr   a mashup that lets you follow your friends by showing their tweets on a Yahoo map.",
-    "authorId": 2,
+    "authorsIds": [2],
     "categoryId": 2
   },
   {
     "id": 5,
     "title": "JSTL in Action",
     "shortDescription": "JSTL is an important simplification of the Java web platform. With JSTL, page authors can now write dynamic pages using standard HTML-like tags and an easy-to-learn expression language.",
-    "authorId": 3,
+    "authorsIds": [3],
     "categoryId": 2
   }
 ]

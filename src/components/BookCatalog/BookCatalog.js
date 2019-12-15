@@ -14,15 +14,11 @@ class BookCatalog extends Component {
   state = {
     isLoading: false,
     error: false,
-    data: {
-      books: null,
-      authors: null,
-      categories: null,
-    },
+    data: null,
     routes: [
       {
         path: '/books',
-        component: () => <BooksList books={this.state.data.books}/>
+        component: () => <BooksList books={this.state.data.books} authors={this.state.data.authors}/>
       },
       {
         path: '/books/:id',
@@ -55,7 +51,7 @@ class BookCatalog extends Component {
   getDatafromServer = async url => fetch(url)
     .then(response => response.json());
 
-  async loadData() {
+  loadData = async () => {
     this.setState({
       isLoading: true,
       error: false,
@@ -80,13 +76,25 @@ class BookCatalog extends Component {
     } finally {
       this.setState({ isLoading: false });
     }
-  }
+  };
 
   componentDidMount() {
     this.loadData();
   }
 
   render() {
+    if (this.state.data === null) {
+      return (
+        <div className="errorMessage">
+          {this.state.error
+            ? <p className="errorMessage__text">Opps...Could not fetch data from server. Try again.</p>
+            : <p className="errorMessage__text">Loading...</p>}
+          <button type="button" onClick={this.loadData} className="errorMessage__button">
+            Load data
+          </button>
+        </div>
+      );
+    }
     return (
      <HashRouter>
        <header className="header">
