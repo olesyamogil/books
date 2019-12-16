@@ -1,7 +1,6 @@
 @import "../../variables.scss";
 body {
   background-color: $main-color;
-  font-family: 'Roboto', sans-serif;
   margin: 0;
 }
 
@@ -13,7 +12,7 @@ body {
   padding-top: 20px;
 
   &__title {
-    margin: 0;
+    margin: 0 0 20px 0;
   }
 }
 
@@ -41,7 +40,11 @@ body {
       cursor: pointer;
     }
   }
+}
 
+a {
+  display: block;
+  color: $text-color;
 }
 
 

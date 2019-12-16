@@ -11,7 +11,6 @@ class AuthorInfo extends Component {
         authorsBooks.push(+idKey);
       }
     }
-    console.log(authorsBooks);
     return (
       <div className="author-info">
         <p className="author-info__name">

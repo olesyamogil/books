@@ -9,6 +9,7 @@ import Tabs from "../Tabs/Tabs";
 import TabsContent from "../TabsContent/TabsContent";
 import BookInfo from "../BookInfo/BookInfo";
 import AuthorInfo from "../AuthorInfo/AuthorInfo";
+import SearchExampleCategory from "../Search/SearchExampleCategory";
 
 class BookCatalog extends Component {
   state = {
@@ -103,6 +104,7 @@ class BookCatalog extends Component {
      <HashRouter>
        <header className="header">
          <h1 className="header__title">Book Catalog</h1>
+         <SearchExampleCategory data={this.state.data}/>
          <Tabs tabs={Object.keys(this.state.data)}/>
        </header>
        <TabsContent content={this.state.routes} />
