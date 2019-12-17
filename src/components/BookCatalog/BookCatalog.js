@@ -102,9 +102,9 @@ class BookCatalog extends Component {
     }
     return (
      <HashRouter>
-       <header className="header">
-         <h1 className="header__title">Book Catalog</h1>
-         <SearchExampleCategory data={this.state.data}/>
+       <header className="page-header">
+         <h1 className="page-header__title">Book Catalog</h1>
+         <SearchExampleCategory />
          <Tabs tabs={Object.keys(this.state.data)}/>
        </header>
        <TabsContent content={this.state.routes} />
